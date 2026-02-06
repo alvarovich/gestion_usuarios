@@ -1,13 +1,13 @@
 package gestion;
 
-public class usuario {
+public class Usuario {
 
     private String nombre;
     private String email;
     private double nominaBruta;
 
     // Constructor
-    public usuario(String nombre, String email, double nominaBruta) {
+    public Usuario(String nombre, String email, double nominaBruta) {
         this.nombre = nombre;
         this.email = email;
         this.nominaBruta = nominaBruta;
