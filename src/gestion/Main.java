@@ -1,10 +1,12 @@
-package rama3;
+package gestion;
+
+
 import java.util.*;
-public class principal1 {
+
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 		Scanner leer = new Scanner(System.in);
 		System.out.println(" === CALCULO DE GASTOS ===");
 
@@ -38,8 +40,6 @@ public class principal1 {
 				valido=false;
 			}
 		}
-		
-		
 	}
 
 }

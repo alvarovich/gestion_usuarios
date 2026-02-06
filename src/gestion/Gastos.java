@@ -1,4 +1,4 @@
-package rama3;
+package gestion;
 
 public class Gastos {
 
