@@ -10,14 +10,14 @@ public class Main {
 
         // Crear usuario introduciendo datos
         System.out.println("Introduce el nombre:");
-        String nombre = scanner.nextLine();
+        String nombre = sc.nextLine();
 
         System.out.println("Introduce el email:");
-        String email = scanner.nextLine();
+        String email = sc.nextLine();
 
         System.out.println("Introduce la nómina bruta:");
-        double nominaBruta = scanner.nextDouble();
-        scanner.nextLine(); // limpiar buffer
+        double nominaBruta = sc.nextDouble();
+        sc.nextLine(); // limpiar buffer
 
         Usuario usuario = new Usuario(nombre, email, nominaBruta);
 
@@ -28,13 +28,13 @@ public class Main {
         System.out.println("\n--- Editar datos del usuario ---");
 
         System.out.println("Nuevo nombre:");
-        usuario.setNombre(scanner.nextLine());
+        usuario.setNombre(sc.nextLine());
 
         System.out.println("Nuevo email:");
-        usuario.setEmail(scanner.nextLine());
+        usuario.setEmail(sc.nextLine());
 
         System.out.println("Nueva nómina bruta:");
-        usuario.setNominaBruta(scanner.nextDouble());
+        usuario.setNominaBruta(sc.nextDouble());
 
         System.out.println("\nDatos actualizados:");
         usuario.mostrarDatos();
@@ -43,12 +43,42 @@ public class Main {
         while (opcion != 0) {
             Menu.menuMostrar();
             System.out.println("Elige una opcion:");
-            opcion = leer.nextInt();
+            opcion = sc.nextInt();
 
-            Menu.menuOpciones(opcion, leer, i1);
+            Menu.menuOpciones(opcion, sc, i1);
         }
-        System.out.println("Suma total de ingresos: " + i1.sumaTotal());
-        scanner.close();
 
-    }
-}
+        System.out.println(" === CALCULO DE GASTOS ===");
+        System.out.println("Suma total de ingresos: " + i1.sumaTotal());
+		boolean valido=false;
+		while(!valido) {
+			try {
+
+				System.out.println();
+				System.out.println("Introduce el gasto del alquiler: ");
+				double alquiler = sc.nextDouble();
+				System.out.println();
+				System.out.println("Introduce el gasto en viajes: ");
+				double viajes = sc.nextDouble();
+				System.out.println();
+				System.out.println("Introduce lso gastos varios");
+				double gastosVarios = sc.nextDouble();
+
+				Gastos gastos = new Gastos(alquiler, viajes, gastosVarios);
+
+				System.out.println(" === RESUMEN DE GASTOS ===");
+				System.out.println("Alquiler: " + alquiler + " € " );
+				System.out.println("Viajes: " +viajes+ " € ");
+				System.out.println("Gatos Varios: " +gastosVarios+ " € ");
+				System.out.println("TOTAL GASTOS: " +gastos.calcularTotal()+ "€ ");
+				valido=true;
+
+			}catch(InputMismatchException e) {
+				System.out.println("ENTRADA NO VÁLIDA, INTRODUCE OTRA VEZ");
+				sc.nextLine();
+				valido=false;
+
+			}
+		}
+        sc.close();
+	}
